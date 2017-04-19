@@ -5,7 +5,9 @@ requirejs.config({
 		jquery: 'assets/jquery/jquery.min',
         cookie: 'assets/jquery-cookie/jquery.cookie'
 	},
-	
+	shim:{
+		
+	}
 
 });
 
