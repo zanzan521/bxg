@@ -1,5 +1,8 @@
 
-define(['jquery','template','cookie'],function($,template){
+define(['jquery','template','nprogress','cookie'],function($,template,NProgress){
+
+	NProgress.start();
+	NProgress.done();
 		// if(document.cookie.indexOf('PHPSESSID')！=-1){
 	// 	//登录过
 	// }else {
@@ -36,7 +39,7 @@ define(['jquery','template','cookie'],function($,template){
 		
 		 render = template.compile(source),
 		html = render(loginfo);
-		$('.profile').append(html);
+		$('.aside .profile').append(html);
 
 //退出
 $("#loginout").on("click",function(){
@@ -53,7 +56,11 @@ $("#loginout").on("click",function(){
 
 	})
 
-})
+});
+//导航栏交互
+$('.navs ul').prev('a').on('click',function(){
+	$(this).next('ul').slideToggle();
+});
 
 });
 
