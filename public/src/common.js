@@ -1,5 +1,5 @@
 
-define(['jquery','cookie'],function($){
+define(['jquery','template','cookie'],function($,template){
 		// if(document.cookie.indexOf('PHPSESSID')！=-1){
 	// 	//登录过
 	// }else {
@@ -18,8 +18,25 @@ define(['jquery','cookie'],function($){
 
 	var loginfo =$.cookie('loginfo') && JSON.parse($.cookie('loginfo'));
 
-	// console.log(document.cookie);
+	// console.log(loginfo);//判断成功
+							// 	Object{
+							// tc_avatar
+							// "http://static.botue.com/images/avatar/58f617aa2f20f.jpg"
+							// tc_name
+							// "前端学院"
+							// __proto__
+						   // 			}
+		// $('.profile img').attr('src','loginfo.tc_avatar')				   ;
+		// $('.profile h4').text('loginfo.tc_name');
 
+		var source = '<div class="avatar img-circle">\
+						<img src="<%= tc_avatar %>">\
+					</div>\
+					<h4><%= tc_name %></h4>',
+		
+		 render = template.compile(source),
+		html = render(loginfo);
+		$('.profile').append(html);
 
 //退出
 $("#loginout").on("click",function(){
